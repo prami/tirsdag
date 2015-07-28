@@ -7,4 +7,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def assert_saves(model)
+    assert model.save, "Cannot save #{model.class.name}#. Errors:\n  " + model.errors.full_messages.join("\n  ")
+  end
 end
