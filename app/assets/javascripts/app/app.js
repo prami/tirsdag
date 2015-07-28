@@ -16,7 +16,8 @@ angular.module('todomvc', ['ngRoute'])
 				store: function (todoStorage) {
 					// Get the correct module (API or localStorage).
 					return todoStorage.then(function (module) {
-						module.get(); // Fetch the todo records in the background.
+            var data = JSON.parse(angular.element("[id='todomvc-index.html']").attr('preload-data'))
+            angular.copy(data, module.todos);
 						return module;
 					});
 				}
